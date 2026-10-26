@@ -3,7 +3,7 @@
   Original authored SVG artwork remains an automatic load-error fallback. */
 export const photos = [
   "photo-1427504494785-3a9ca7044f45",
-  "photo-1523050854058-8df90110c9f1",
+  "photo-1523580494863-6f3031224c94",
   "photo-1509062522246-3755977927d7",
   "photo-1523240795612-9a054b0db644",
   "photo-1434030216411-0b793f4b4173",
