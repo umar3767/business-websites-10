@@ -1,18 +1,26 @@
-# Design matrix — десять независимых арт-дирекшенов
+# BUSINESS WEBSITES 10 — PREMIUM ART DIRECTION MATRIX
 
-Различия сформированы по mood / палитре / типографике / hero / сетке / особенностям / motion / структуре / CTA. У каждого бренда уникальные композиционная система, предметный арт и механика.
+Each brand now has its **own CSS override layer**, responsive composition and eight non-repeating editorial photo source references. The ten sites keep independent assets/config/routes.
 
-| № | Бренд / mood | Палитра | Шрифтовая пара | Hero | Сетка | Уникальная деталь | Motion | Внутренние страницы | Цель |
-|--|--|--|--|--|--|--|--|--|--|
-| 01 | **VELA DENT** / Calm Precision | china white · mist blue · teal | system humanist + Georgia | смещённая архитектурная фотографическая иллюстрация | асимметрия 7:5, whitespace | service-path selector | мягкие появления | направления / подход / контакты | подобрать направление |
-| 02 | **MARCH / 09** / Modern Heritage | carbon · cream · rust | Impact-like display + serif | постер на всю ширину, графический портрет | вертикальный постер, грубые правила | прайс + переключатель стилей | marquee + snap | услуги / lookbook / запись | выбрать стрижку |
-| 03 | **MUSE ATELIER** / Soft Fashion | plum · porcelain pink · ivory | Didone serif + neutral sans | наслаивающиеся модные панели | fashion editorial overlapping | галерея техник | crossfade | меню / портфолио / студия | найти процедуру |
-| 04 | **NOIR / AUTO** / Obsidian Studio | coal · metal · acid lime | square grotesk + mono | кинематографический автомобиль | строгие горизонтальные lanes | before / after slider | технические sweeps | пакеты / сравнение / связь | сравнить пакеты |
-| 05 | **LOOP ACADEMY** / Curious Future | parchment · ultraviolet · vermilion | rounded sans + mono | разноуровневые учебные модули | bento, angled labels | фильтры + расписание | playful stagger | курсы / форматы / старт | выбрать курс |
-| 06 | **HUSH HOME** / Air & Order | mint mist · bottle green · oat | light sans + classic serif | воздушный крупный headline | вертикальные панели, soft corner | расчёт клининга | quiet easing | типы / калькулятор / заказ | рассчитать объём |
-| 07 | **TORQ / WORKS** / Industrial Trust | warm concrete · blackened blue · orange | industrial condensed + mono | инженерная типографика + авто схема | table-based, hazard index | селектор проблем | hard precision | сервис / процесс / связь | найти вид работ |
-| 08 | **FORME OBJECTS** / Living Objects | forest · flax · soft brass | gallery serif + neutral sans | предмет в полутоновом ателье | музейный каталог, spaced columns | 2-фильтровый каталог | slow floating | коллекция / материалы / запрос | подобрать изделие |
-| 09 | **STRATA ROOMS** / Architectural Narrative | limestone · terracotta · graphite | architectural serif + minimalist sans | интерьерный пространственный коллаж | журнальные главы с индексом | сметный диапазон | restrained reveal | работы / истории / смета | оценить бюджет |
-| 10 | **PETAL / PARADE** / Botanical Play | lilac · meadow · coral | bubbly display + fine sans | органические флористические рамки | скруглённая асимметрия | каталог + корзина | bouncy micro | букеты / доставка / корзина | собрать букет |
+| Folder | Brand | Visual system | Hero composition | Gallery and cards | Accent |
+|---|---|---|---|---|---|
+| 01-dental | VELA DENT | Calm Precision | off-axis pale architecture / curved photo | staggered clinical service cards | mist teal |
+| 02-barbershop | MARCH / 09 | Modern Heritage | editorial poster, oversize display text | grayscale portraits, square dividers | copper rust |
+| 03-beauty-salon | MUSE ATELIER | Soft Editorial | soft fashion didone, elliptical portrait | staggered fashion portrait columns | dusty plum |
+| 04-car-detailing | NOIR / AUTO | Obsidian Performance | cinematic full-bleed automotive imagery | technical dark cards, lime highlights | acid lime |
+| 05-learning-center | LOOP ACADEMY | Curious Futures | playful rotated image, dot grid | colorful soft bento cards | coral |
+| 06-cleaning | HUSH HOME | Air & Order | organic soft architectural arch | calm rounded service cards | sage |
+| 07-auto-service | TORQ / WORKS | Industrial Trust | condensed engineering typography | gridded industrial panels | safety orange |
+| 08-furniture | FORME OBJECTS | Living Objects | furniture gallery with expanded vertical image | transparent product-gallery cards | brass |
+| 09-renovation | STRATA ROOMS | Architectural Journal | strict typographic architectural split | vertical architectural photo cards | terracotta |
+| 10-flower-shop | PETAL / PARADE | Botanical Joy | organic tilted botanical photo | colorful playful object cards | coral / lilac |
 
-Каждый сайт имеет собственный CSS и локальные ресурсы. Доступность, RU/UZ и принципы честного демонстрационного режима унифицированы на уровне логики, но не визуального шаблона.
+## Structure
+- Existing per-site `styles.css`: base component styles + brand-specific premium override.
+- Existing per-site `app.js`: shared resilient functionality, responsive photography loading and SVG fallback.
+- New per-site `content/photography.js`: 8 unique Unsplash photo IDs.
+- Original SVGs: remain bundled and functional offline.
+- Root `index.html` and `ALL_SITES_INDEX.html`: upgraded editorial collection preview, loaded progressively via `catalog.js`.
+
+## Design quality notes
+These are independent art directions, not independent software implementations; shared accessibility and interaction semantics are maintained deliberately. New visuals should be evaluated in the visual screenshot gallery before calling them finished for individual clients. Actual photos of staff, premises and completed work require the customer's own verified media.
