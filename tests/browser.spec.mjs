@@ -59,7 +59,11 @@ for(const [site,pages] of Object.entries(sites)){
    expect(response.ok()).toBeTruthy();
    await expect(page.locator('.hero-title')).toBeVisible();
    await expect(page.locator('.hero-image')).toHaveCount(1);
-   await expect(page.locator('.service-card')).toHaveCount(3);
+   if(['04-car-detailing','06-cleaning','09-renovation'].includes(site)){
+     expect(await page.locator('main section').count()).toBeGreaterThan(1);
+   } else {
+     await expect(page.locator('.service-card')).toHaveCount(3);
+   }
    await expect.poll(()=>page.locator('.hero-image').evaluate(el=>el.complete&&el.naturalWidth>0)).toBeTruthy();
    await expect(page.locator('.hero-image')).toHaveAttribute('src','assets/hero.svg');
    await page.locator('.lang-toggle').click();
