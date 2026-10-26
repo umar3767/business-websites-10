@@ -53,7 +53,8 @@ test('every site has a distinct premium theme and accessibility fallbacks',()=>{
   assert.match(css,/prefers-reduced-motion:reduce/,site);
   assert.match(css,/:focus-visible/,site);
   assert.match(css,/--paper:/,site);
-  signatures.add(css.match(/--accent:(#[a-fA-F0-9]{6})/)?.[1]??'');
+  const accentMatches=[...css.matchAll(/--accent:(#[a-fA-F0-9]{6})/g)];
+  signatures.add(accentMatches.at(-1)?.[1]??'');
   assert.equal((css.match(/\{/g)||[]).length,(css.match(/\}/g)||[]).length,site);
  }
  assert.equal(signatures.size,10);
