@@ -1,0 +1,38 @@
+name: Premium site quality and browser matrix
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+      - '**/*.css'
+      - '**/*.js'
+      - 'tests/**'
+      - 'playwright.config.mjs'
+      - '.github/workflows/premium-qa.yml'
+  workflow_dispatch:
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test tests/quality.mjs
+  browsers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    needs: static
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save @playwright/test@1.55.0
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-debug
+          path: test-results/
+          if-no-files-found: ignore

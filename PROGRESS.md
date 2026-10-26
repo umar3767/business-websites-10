@@ -1,17 +1,22 @@
-# Progress / final checkpoint — 2026-10-20
+# PROGRESS — Business Websites 10
 
-- [x] Full 253-line master file reviewed.
-- [x] `DESIGN_MATRIX.md` created before coding.
-- [x] Batch 1: dental, barbershop built and Chromium tested.
-- [x] Batch 2: beauty salon, car detailing built and Chromium tested.
-- [x] Batch 3: learning center, cleaning built and Chromium tested.
-- [x] Batch 4: auto service, furniture built and Chromium tested.
-- [x] Batch 5: renovation, flower shop built and Chromium tested.
-- [x] 40 independent main HTML pages and 10 individual 404 pages generated; 10 standalone editable configs.
-- [x] Browser smoke checks, RU/UZ, five responsive widths and site-specific interactions tested; failures fixed, screenshots saved.
-- [x] Original art credits, publishing instructions and per-site QA reports produced.
-- [x] Individual ZIP and master ZIP packaging performed by `scripts/package_delivery.py`.
+## Implemented in premium-redesign-20261026
+- Updated all ten site CSS systems with separate premium art directions while retaining functionality.
+- Added eight different photographic CDN references per brand, 80 references in total.
+- Enhanced image loader with responsive `srcset`, eager hero fetch and original SVG fallback.
+- Added defensive browser storage handling when storage is unavailable.
+- Added Node quality tests and Playwright cross-engine/mobile test suite.
+- Kept original 40 content pages and 10 error pages; kept demo disclosures and configurable data.
 
-### Checkpoint caveats
+## Explicit limitations
+- Do not label the 10 sample businesses as actual real-world companies.
+- Image URLs and individual releases require visual/source verification for client use.
+- Not a real backend/order/payment/CRM service; customer data and integrations remain unconfigured.
+- Browser tests are not a guarantee about every physical device or browser version.
+- See ASSET_MANIFEST.md and deployment checklist.
 
-Chromium real-URL navigation restricted by ERR_BLOCKED_BY_ADMINISTRATOR; used DOM loading in real Chromium instead. External photography inaccessible; original SVG was created. Sites were not publicly deployed; Umar Portfolio was not altered. Brand name and full real-company due diligence required before business use.
+## Release process
+1. Pass static and browser tests on the PR branch.
+2. Review the visual outcome and source photographs.
+3. Merge PR after quality gates.
+4. Verify GitHub Pages live URLs and confirm publishing status.

@@ -31,7 +31,7 @@ function art(className='scene-art',src='assets/hero.svg',alt='Conceptual brand a
   image.loading = hero ? 'eager' : 'lazy';
   if (hero) image.setAttribute('fetchpriority','high');
   // Keep the original illustration for a genuine offline fallback and for the before/after demo.
-  const cardMatch = src.match(/piece-(\\d+)\\.svg$/);
+  const cardMatch = src.match(/piece-(\d+)\.svg$/);
   const pageNo = Math.max(0, data.routes.indexOf(location.pathname.split('/').pop()));
   const selected = hero ? (page === 'home' ? 0 : (pageNo + 1) % 4) :
      cardMatch ? 4 + ((Number(cardMatch[1]) - 1) % 4) : -1;
