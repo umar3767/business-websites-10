@@ -1,46 +1,22 @@
-# QA SUMMARY — BUSINESS WEBSITES 10
+# QA SUMMARY — PREMIUM REDESIGN
 
-**Дата:** 2026-10-20. **Состояние:** 10 из 10 независимых концептуальных сайтов реализованы и проверены; общий браузерный smoke test: **639/639 успешных проверок после исправлений. Каждый сайт содержит **четыре содержательные страницы + 404**, 2 языка, отдельные CSS/JS/assets/config, самостоятельную навигацию, нишевую интерактивность и честный демо-контакт. Никакие сайты не опубликованы.
+## Verified checks as of October 26, 2026
+- Static integrity suite: passed on GitHub Actions for premium branch.
+- Browser scenario matrix: **150/150 passed** in Chromium desktop, Firefox desktop, WebKit desktop, Android Chromium and iPhone WebKit profiles on PR commit `36027dd8`. Run: https://github.com/umar3767/business-websites-10/actions/runs/40372154590
+- Photo CDN availability: **80/80 reachable** after fixing seven broken references. Run: https://github.com/umar3767/business-websites-10/actions/runs/40372603321
+- Distinct thematic palettes/design CSS: 10 out of 10; all JS modules parse.
+- Pages confirmed by static checks: 40 content HTML files + 10 site 404 files.
+- Current latest-head CI may differ after additional commits; rely on the latest workflow result to assess release readiness.
 
-| № | Проект | Готовых HTML-страниц | Проверок пройдено | Ключевая функция | RU/UZ | 320–1920 px | Скриншоты | Известное ограничение |
-|---|---|---:|---:|---|---|---|---:|---|
-| 01 | Стоматология / 01-dental | 4 + 404 | 64/64 | service category filtering | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 02 | Барбершоп / 02-barbershop | 4 + 404 | 64/64 | service category filtering | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 03 | Салон красоты / 03-beauty-salon | 4 + 404 | 64/64 | service category filtering | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 04 | Детейлинг / 04-car-detailing | 4 + 404 | 64/64 | before-after slider | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 05 | Учебный центр / 05-learning-center | 4 + 404 | 65/65 | three filters and schedule | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 06 | Клининг / 06-cleaning | 4 + 404 | 63/63 | cleaning calculator | Проверено | 5 размеров | 6 | Нет фото; URL-навигация браузером заблокирована |
-| 07 | Автосервис / 07-auto-service | 4 + 404 | 64/64 | service category filtering | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 08 | Мебель / 08-furniture | 4 + 404 | 64/64 | material + furniture filters | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 09 | Ремонт квартир / 09-renovation | 4 + 404 | 63/63 | renovation budget range | Проверено | 5 размеров | 4 | Нет фото; URL-навигация браузером заблокирована |
-| 10 | Цветочный магазин / 10-flower-shop | 4 + 404 | 64/64 | flower filters and persistent cart | Проверено | 5 размеров | 6 | Нет фото; URL-навигация браузером заблокирована |
+## Test scope
+- 30 scenario definitions across 10 sites, run in five engine/device profiles.
+- Home rendering, page-to-page navigation, RU/UZ toggling, external-photo error fallback to original SVG, narrow-screen document overflow.
+- Responsive photograph sizes and unique photo reference IDs verified by static checks.
+- Tests purposely block remote images during fallback scenarios; separate HEAD checks verify 80 remote CDN sources.
 
-## Дополнительные проверки
-
-- `node --check` прошёл на **20 файлах** JavaScript (app.js и content/site-data.js каждого сайта).
-- Статически проверены существование и HTML-обвязка **40 основных страниц + 10 страниц 404**.
-- Для всех 10 сайтов сделаны **не менее 4 Chromium-снимков**; дополнительно выполнены снимки калькулятора и наполненной корзины.
-- Галерея desktop-скриншотов собрана в `screenshots/DESIGN_REVIEW_CONTACT_SHEET.jpg`: сравнивались hero, композиция, предметный арт, контраст, типографика, палитра и визуальное настроение.
-- Первоначально обнаружены ошибки тестового селектора навигации и проверки ползунка. Исправлена автоматизация теста и выполнен повторный прогон.
-- На ширине 320 px были найдены overflow у TORQ / WORKS, FORME OBJECTS, STRATA ROOMS и PETAL / PARADE; исправлен сжимающийся мобильный navbar. Для STRATA дополнительно исправлена сетка этапов. Повторные проверки на всех 5 размерах прошли.
-- Калькуляторы дают **демонстрационные ориентиры**, а не коммерческие сметы. Корзина хранит данные только локально и не списывает деньги.
-
-## Реальные ограничения (не скрывать)
-
-1. Chromium в данной среде блокировал навигацию к любому `file://`, локальному `http://127.0.0.1` и даже перехваченному тестовому URL (**ERR_BLOCKED_BY_ADMINISTRATOR**). Для проверки DOM, рендеринга, адаптивности и JS использован **настоящий Chromium** с `page.set_content` и инлайнингом локальных CSS/JS/арт-ресурсов. Это не полная E2E-проверка боевого браузерного роутинга или публикации. URL-структура и наличие файлов проверены отдельно.
-2. Недоступно сетевое скачивание качественных лицензированных фотографий. Вместо внешних зависимостей поставлены оригинальные адаптивные SVG-иллюстрации. Они задуманы как самостоятельное концептуальное направление, но **не равноценны профессиональной предметной фотосъёмке** для коммерческого сайта. Для фото-ориентированных брендов перед передачей клиентам следует заменить/дополнить арт утверждёнными фотоматериалами.
-3. Нет подтверждённых бизнес-контактов, сотрудников, адресов, актуальных тарифов, лицензий, наличия товаров, гарантий. Перед использованием в реальном бизнесе обязательно выполнить `PUBLISH_CHECKLIST.md`. Это **demo-ready**, а не client-ready.
-4. В этой среде не выполнялся Lighthouse, axe-core, скринридер или реальные телефонные/WhatsApp-переходы. Не заявляем недоказанные показатели 90+.
-5. Отсутствуют backend, платежи, приём заказов и live-бронирование — это сознательное ограничение утверждённого статического демо.
-
-## Команды воспроизведения тестирования
-
-```bash
-python scripts/qa_browser.py 1 2
-python scripts/qa_browser.py 3 4
-python scripts/qa_browser.py 5 6
-python scripts/qa_browser.py 7 8
-python scripts/qa_browser.py 9 10
-```
-
-Браузерная автоматизация использует `/usr/bin/chromium` и Python Playwright, а не дополнительную зависимость рабочих сайтов. Все production-сайты автономны и не импортируют общий QA-код.
+## Important limitations
+- Simulated browsers/device profiles are **not physical testing** on every Android phone, iPhone or browser version.
+- The 80 image HTTP checks verify availability only, not aesthetic relevance, origin permissions for identifiable people, exact Unsplash account source attribution, or future uptime.
+- Lighthouse, comprehensive WCAG/manual screen reader and real-world forms/payments have **not** been validated by these checks.
+- Backends, payment providers, real business staff/contacts, prices and legal/medical licenses remain unset.
+- Final CSS screenshots must be visually reviewed; a passing selector test doesn't establish world-class aesthetics.

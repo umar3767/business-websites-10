@@ -1,32 +1,36 @@
-# Business Websites 10 — Portfolio demos
+# Business Websites 10 — Premium Portfolio Collection
 
-10 independently publishable static websites, four HTML pages each, RU/UZ content with original graphics and niche-specific JavaScript interactions. These are **fictional demonstration brands**, not operating businesses. All contact information, sample prices, offerings, personnel and legal details must be configured with verified business data before any commercial use.
+**Live index:** https://umar3767.github.io/business-websites-10/
 
-## Preview
+Ten independent static RU/UZ portfolio website concepts, each with four primary pages plus a 404 page. They are **fictional demonstration brands**, not operating businesses.
 
-- [All 10 demos](./index.html)
-- Each project lives in a self-contained folder, e.g. `01-dental/`.
-- No build or paid services are needed.
-- JavaScript ES modules require serving over HTTP rather than opening via `file://`. Use VS Code's Live Server for local preview.
+## What is implemented
+- Ten different responsive art directions, compositions, color systems, UI details and photography selections.
+- Eight independently sourced photo references per brand (80 total), requested at responsive sizes; original local SVG designs are automatic fallback on network or image errors.
+- Existing service filters, calculators, contact preparation, shopping-cart interaction where present.
+- Defensive local storage handling; RU/UZ switch preserved throughout navigation.
+- Collection landing page styled as a premium editorial gallery.
+- Static tests, 150 browser scenario runs across Chromium, Firefox, WebKit, Android and iPhone **emulations**, photo URL audits and visual-screenshot gallery workflow.
 
-## Publish all 10 with one GitHub Pages site
+## Run local
+Start a static HTTP server from the repository root:
+```sh
+python3 -m http.server 4173
+```
+Visit http://localhost:4173/
 
-1. Sign into GitHub and create a **public** repository named `business-websites-10` (do not initialize it with a README).
-2. Open GitHub Desktop and **File → Clone repository**. Clone the empty repository.
-3. Copy **all the contents of this extracted folder** into the cloned repository's root, including the `index.html` file and all ten numbered directories. Do not nest this entire folder inside another folder.
-4. In GitHub Desktop, **Commit to main** and **Push origin**.
-5. In your GitHub repository open **Settings → Pages → Build and deployment → Deploy from a branch → main → / (root)**. Save.
-6. GitHub will display the published site address in the Pages section when deployment is complete. It will typically look like `https://YOUR_USERNAME.github.io/business-websites-10/`. Substitute your actual account/repository name.
+Run checks with Node.js 22:
+```sh
+node --test tests/quality.mjs
+npm install --no-save @playwright/test@1.55.0
+npx playwright install chromium firefox webkit
+npx playwright test
+```
 
-The main address opens the catalog; individual sites open under `.../01-dental/` through `.../10-flower-shop/`. GitHub Pages provides *one project* with *ten independent navigable demos* (not ten separate repository domains). Each numbered folder can later be moved into its own repository without changing its internal asset paths.
+## Source and edits
+Each `NN-site/content/site-data.js` contains the business data, language text, services and contacts. Each `NN-site/content/photography.js` contains that site's editorial photo IDs. Do not put private API tokens in these public files.
 
-## GitHub browser upload alternative
+## Before publishing for a *real* business
+Provide verified company name, contacts, address, service pricing, actual staff, legal/license details, photo clearances and approved order/booking integration. Never imply that a demo company exists or that example photos depict the customer's actual work. Confirm licenses and recognizable-person releases for each photo. See `ASSET_MANIFEST.md` and `DEPLOY_CHECKLIST.md`.
 
-Use **Add file → Upload files**, dragging files and folders from the extracted directory, possibly in several batches if GitHub's browser file-count cap is reached. Preserve exact folder paths. Commit all uploads to `main`, then enable Pages as in step 5. GitHub Desktop is usually easier for uploading 200+ files.
-
-## Notes
-
-- No uploads or deployment are implied by inclusion of these files; public publishing needs GitHub account permissions.
-- The visual artwork is original SVG illustration, not licensed editorial photography.
-- Each project's `content/site-data.js` is the only config for business details and both languages.
-- See each project's `README.md`, `PUBLISH_CHECKLIST.md`, and `TEST_REPORT.md` for details and known limitations.
+All sites remain separately deployable as static folders. Payment systems, a real appointment backend, CRM and actual customer enquiry delivery are **not** present without integration and setup.
