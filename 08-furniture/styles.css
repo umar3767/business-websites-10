@@ -114,3 +114,6 @@ html{scroll-behavior:auto}
 .cta-eyebrow{opacity:1}
 
 .statement-strip{color:var(--paper)}.button-main{background:var(--ink);color:var(--paper)}
+
+/* Lighthouse measured contrast follow-up. */
+.hero .kicker,.hero .hero-lead,.hero .hero-index{color:var(--ink);opacity:1}.hero .kicker{border-left:3px solid var(--accent);padding-left:12px}
