@@ -98,3 +98,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 06-cleaning */
 .editorial-grid{gap:clamp(18px,3vw,44px)}.editorial-panel{border-radius:45% 45% 34px 34px}.editorial-panel:nth-child(2){border-radius:34px 34px 45% 45%;margin-top:72px}.editorial-photo{filter:saturate(.77)}.editorial-label{font-family:var(--serif);font-weight:400;font-size:clamp(15px,1.7vw,22px)}@media(max-width:767px){.editorial-panel:nth-child(2){margin-top:26px}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.button-main{background:var(--ink);color:var(--paper)}.button-main:hover{background:#3c6551}

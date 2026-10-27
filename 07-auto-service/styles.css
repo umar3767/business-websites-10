@@ -110,3 +110,13 @@ html{scroll-behavior:auto}
 .service-advisor .contact-warning{grid-column:1/-1;font-size:13px}
 .service-advisor .result-count{display:block;margin-bottom:30px;color:var(--muted)}
 @media(max-width:767px){.service-advisor .advisor-controls{grid-template-columns:1fr;padding:22px}.service-advisor .contact-warning{grid-column:auto}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.card-chip{font-weight:800}

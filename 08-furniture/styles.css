@@ -104,3 +104,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 08-furniture */
 .editorial-grid{gap:clamp(13px,2vw,35px);align-items:end}.editorial-panel{grid-column:span 5;aspect-ratio:3/4;border-radius:0}.editorial-panel:nth-child(2){grid-column:span 3;aspect-ratio:2/3;margin-top:0}.editorial-panel:nth-child(3){grid-column:span 4;aspect-ratio:3/5;margin-top:0}.editorial-label{font:400 clamp(14px,1.7vw,23px)/1.2 var(--serif)}@media(max-width:767px){.editorial-panel{grid-column:span 6}.editorial-panel:nth-child(2){grid-column:span 6;aspect-ratio:3/4}.editorial-panel:nth-child(3){grid-column:span 12;aspect-ratio:16/10}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.button-main{background:var(--ink);color:var(--paper)}
