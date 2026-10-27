@@ -100,3 +100,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 01-dental */
 .editorial-panel{border-radius:130px 12px 12px 12px;box-shadow:0 20px 60px #193d4312}.editorial-panel:nth-child(2){border-radius:12px 12px 130px 12px}.editorial-panel:nth-child(3){border-radius:12px 130px 12px 12px}@media(max-width:767px){.editorial-panel{border-radius:75px 8px 8px 8px}.editorial-panel:nth-child(2){border-radius:8px 8px 75px 8px}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.button-main{background:var(--ink);color:var(--paper)}.button-main:hover{background:#315b60}

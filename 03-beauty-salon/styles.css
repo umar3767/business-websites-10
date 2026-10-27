@@ -102,3 +102,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 03-beauty-salon */
 .editorial-panel{border-radius:49% 49% 0 0;aspect-ratio:3/5}.editorial-panel:nth-child(2){border-radius:0;aspect-ratio:3/4}.editorial-panel:nth-child(3){border-radius:0 0 47% 47%;aspect-ratio:3/5}.editorial-label{font:italic clamp(17px,2vw,28px)/1.1 var(--display)}@media(max-width:767px){.editorial-panel,.editorial-panel:nth-child(2){aspect-ratio:3/4}.editorial-panel:nth-child(3){aspect-ratio:16/10}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.button-main{background:var(--ink);color:var(--paper)}.button-main:hover{background:#704059}

@@ -118,3 +118,13 @@ html{scroll-behavior:auto}
  .hero-title{font-size:clamp(46px,11.6vw,74px);line-height:.95;overflow-wrap:anywhere}
  .hero-visual{position:relative;display:block;width:100%;height:clamp(310px,92vw,480px);min-height:0;max-height:none}
 }
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.card-num{border-bottom:2px solid var(--accent);align-self:flex-start}.cta-eyebrow{color:var(--paper)}

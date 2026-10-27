@@ -101,3 +101,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 05-learning-center */
 .editorial-grid{gap:18px}.editorial-panel{border-radius:36px;aspect-ratio:4/5;box-shadow:9px 12px 0 #e8dbfd}.editorial-panel:nth-child(2){border-radius:65px 22px 22px 22px;transform:rotate(2deg)}.editorial-panel:nth-child(3){border-radius:22px 65px 22px 22px;transform:rotate(-2deg)}@media(max-width:767px){.editorial-panel{box-shadow:4px 5px 0 #e8dbfd}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.statement-strip{color:var(--paper)}.button-main{color:#172027}.button-main:hover{background:#d64c3a}

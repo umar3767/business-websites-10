@@ -104,3 +104,13 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 04-car-detailing */
 .editorial-panel{grid-column:span 6;aspect-ratio:16/9;border:1px solid var(--accent);border-radius:2px}.editorial-panel:nth-child(2){margin-top:0}.editorial-panel:nth-child(3){grid-column:span 12;aspect-ratio:21/8;margin-top:0}.editorial-label{font:clamp(16px,2vw,28px)/1.1 var(--display);text-transform:uppercase;color:var(--accent)}.editorial-photo{filter:contrast(1.07) saturate(.7)}@media(max-width:767px){.editorial-panel{grid-column:span 6;aspect-ratio:4/5}.editorial-panel:nth-child(3){aspect-ratio:16/9}}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.card-num{border-bottom:2px solid var(--accent);align-self:flex-start}
