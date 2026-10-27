@@ -84,3 +84,53 @@ html{scroll-behavior:auto}
 .card-title{font-family:var(--display);font-size:clamp(32px,3vw,52px);text-transform:uppercase}
 .statement-strip{background:var(--accent);color:#171818}
 @media(max-width:767px){.hero{padding-right:22px;grid-template-columns:1fr}.hero-title{font-size:clamp(72px,17vw,112px)}.hero-visual{height:440px}}
+
+
+/* 2026 editorial gallery: contextual photography with original SVG fallback. */
+.editorial-gallery{padding-block:clamp(80px,9vw,140px)}
+.editorial-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(10px,2vw,28px);align-items:start}
+.editorial-panel{grid-column:span 4;position:relative;overflow:hidden;min-width:0;margin:0;aspect-ratio:3/4;background:var(--panel);isolation:isolate}
+.editorial-panel:nth-child(2){margin-top:55px}.editorial-panel:nth-child(3){margin-top:22px}
+.editorial-photo{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.editorial-panel:hover .editorial-photo{transform:scale(1.045)}
+.editorial-panel::after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.65));pointer-events:none}
+.editorial-label{position:absolute;z-index:1;bottom:0;left:0;right:0;padding:clamp(15px,2vw,26px);color:white;font-size:clamp(12px,1.2vw,16px);font-weight:700;line-height:1.4}
+.basket-remove{border:1px solid var(--stroke);background:transparent;color:var(--ink);min-width:44px;min-height:44px;font-size:25px;border-radius:50%}
+.basket-remove:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:767px){.editorial-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.editorial-panel{grid-column:span 1}.editorial-panel:nth-child(2){margin-top:26px}.editorial-panel:nth-child(3){grid-column:span 2;margin-top:0;aspect-ratio:16/10}.editorial-label{font-size:12px;padding:14px}}
+@media(prefers-reduced-motion:reduce){.editorial-photo{transition:none}.editorial-panel:hover .editorial-photo{transform:none}}
+
+/* Bespoke identity: 02-barbershop */
+.editorial-grid{gap:2px;background:var(--accent);padding:2px}.editorial-panel{border-radius:0;filter:grayscale(.78);transition:filter .3s}.editorial-panel:hover{filter:grayscale(0)}.editorial-panel:nth-child(2),.editorial-panel:nth-child(3){margin-top:0}.editorial-label{font:clamp(18px,2vw,30px)/1 var(--display);text-transform:uppercase;color:var(--ink)}.editorial-gallery .section-title{text-transform:uppercase}
+
+
+/* Visual QA correction: the previous poster headline pushed the photograph
+   below the first viewport. The new cinematic split keeps both visible. */
+@media(min-width:768px){
+ .hero{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(18px,2.5vw,45px);min-height:750px;padding:clamp(60px,6vw,90px) clamp(25px,5vw,85px);align-items:center}
+ .hero-copy{min-width:0;max-width:none;padding-right:0}
+ .hero-title{font-size:clamp(53px,5.7vw,94px);line-height:.94;overflow-wrap:anywhere}
+ .hero-visual{position:relative;grid-column:2;width:100%;height:590px;min-height:480px;max-height:none;align-self:center;filter:grayscale(.5) contrast(1.08)}
+}
+@media(max-width:767px){
+ .hero{display:flex;flex-direction:column;align-items:stretch;gap:34px;min-height:auto;padding:48px 22px 67px}
+ .hero-copy{width:100%;min-width:0;padding:0}
+ .hero-title{font-size:clamp(46px,11.6vw,74px);line-height:.95;overflow-wrap:anywhere}
+ .hero-visual{position:relative;display:block;width:100%;height:clamp(310px,92vw,480px);min-height:0;max-height:none}
+}
+
+
+/* WCAG visual contrast refinement, based on measured Lighthouse audit. */
+.eyebrow,.step-no,.card-num{color:var(--ink);opacity:1}
+.eyebrow{border-left:3px solid var(--accent);padding-left:10px}
+.section-lead,.card-description,.card-link,.result-count,.card-chip,.contact-warning{color:var(--ink);opacity:1}
+.footer-brand p,.footer-disclosure{color:var(--ink);opacity:1}
+.cta-eyebrow{opacity:1}
+
+.card-num{border-bottom:2px solid var(--accent);align-self:flex-start}.cta-eyebrow{color:var(--paper)}
+
+/* Brighten the naturally dark editorial portrait without losing the cinematic black palette. */
+.hero .hero-image{filter:brightness(1.45) contrast(1.04) saturate(.85)}
+
+/* Follow-up Lighthouse contrast correction. */
+.cta-section{background:#82462e;color:#fff}.cta-section .cta-eyebrow{color:#fff;opacity:1}

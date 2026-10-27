@@ -59,7 +59,7 @@ for(const [site,pages] of Object.entries(sites)){
    expect(response.ok()).toBeTruthy();
    await expect(page.locator('.hero-title')).toBeVisible();
    await expect(page.locator('.hero-image')).toHaveCount(1);
-   if(['04-car-detailing','06-cleaning','09-renovation'].includes(site)){
+   if(['04-car-detailing','06-cleaning','09-renovation','07-auto-service'].includes(site)){
      expect(await page.locator('main section').count()).toBeGreaterThan(1);
    } else {
      await expect(page.locator('.service-card')).toHaveCount(3);

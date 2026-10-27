@@ -1,0 +1,59 @@
+name: Lighthouse baseline — ten premium concepts
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/lighthouse-baseline.yml'
+      - '**/*.css'
+      - '**/app.js'
+  workflow_dispatch:
+jobs:
+  lighthouse:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Launch local HTTP server
+        run: |
+          python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/websites-http.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -fsS http://127.0.0.1:4173/01-dental/index.html >/dev/null && exit 0
+            sleep 1
+          done
+          exit 1
+      - name: Install Lighthouse CLI
+        run: npm install --no-save lighthouse@12
+      - name: Record Lighthouse baseline for each of 10 home pages
+        run: |
+          mkdir -p reports/lighthouse
+          for site in 01-dental 02-barbershop 03-beauty-salon 04-car-detailing 05-learning-center 06-cleaning 07-auto-service 08-furniture 09-renovation 10-flower-shop; do
+            echo "::group::$site"
+            npx lighthouse "http://127.0.0.1:4173/$site/index.html" \
+              --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
+              --only-categories=performance,accessibility,best-practices,seo \
+              --output=json --output-path="reports/lighthouse/$site.json" \
+              --max-wait-for-load=30000 --quiet
+            echo "::endgroup::"
+          done
+      - name: Summarize measured scores without inventing results
+        run: |
+          node --input-type=module <<'NODE'
+          import {readdirSync,readFileSync,appendFileSync} from 'node:fs';
+          const files=readdirSync('reports/lighthouse').filter(x=>x.endsWith('.json')).sort();
+          let table='| Site | Performance | Accessibility | Best practices | SEO |\n|---|---:|---:|---:|---:|\n';
+          for(const file of files){
+            const r=JSON.parse(readFileSync('reports/lighthouse/'+file,'utf8'));
+            const v=id=>Math.round(100*(r.categories?.[id]?.score??0));
+            table+='| '+file.replace('.json','')+' | '+v('performance')+' | '+v('accessibility')+' | '+v('best-practices')+' | '+v('seo')+' |\n';
+          }
+          console.log(table);
+          if(process.env.GITHUB_STEP_SUMMARY)appendFileSync(process.env.GITHUB_STEP_SUMMARY,'## Lighthouse lab baseline (not field Core Web Vitals)\n\n'+table);
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-ten-sites-json
+          path: reports/lighthouse/
+          if-no-files-found: warn
