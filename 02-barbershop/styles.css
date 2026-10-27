@@ -128,3 +128,6 @@ html{scroll-behavior:auto}
 .cta-eyebrow{opacity:1}
 
 .card-num{border-bottom:2px solid var(--accent);align-self:flex-start}.cta-eyebrow{color:var(--paper)}
+
+/* Brighten the naturally dark editorial portrait without losing the cinematic black palette. */
+.hero .hero-image{filter:brightness(1.45) contrast(1.04) saturate(.85)}
