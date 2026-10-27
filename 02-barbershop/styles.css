@@ -131,3 +131,6 @@ html{scroll-behavior:auto}
 
 /* Brighten the naturally dark editorial portrait without losing the cinematic black palette. */
 .hero .hero-image{filter:brightness(1.45) contrast(1.04) saturate(.85)}
+
+/* Follow-up Lighthouse contrast correction. */
+.cta-section{background:#82462e;color:#fff}.cta-section .cta-eyebrow{color:#fff;opacity:1}
