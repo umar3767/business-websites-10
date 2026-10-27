@@ -111,3 +111,6 @@ html{scroll-behavior:auto}
 .cta-eyebrow{opacity:1}
 
 .statement-strip{color:white}.button-main{background:var(--ink);color:var(--paper)}
+
+/* Lighthouse measured contrast follow-up. */
+.statement-strip{background:#93543e;color:#fff}.statement-strip .statement-text{color:#fff;opacity:1}
