@@ -64,3 +64,24 @@ test('flower shop cart adds and explicitly removes items with recalculated total
  await expect(page.locator('.basket-row')).toHaveCount(0);
  await expect(page.locator('.basket-list')).toContainText(/Корзина пока пуста|Savat hozircha bo‘sh/);
 });
+
+test('automotive service advisor filters by concern without claiming diagnosis',async({page})=>{
+ await page.route('https://images.unsplash.com/**',route=>route.abort());
+ await page.goto('/07-auto-service/services.html',{waitUntil:'domcontentloaded'});
+ const chooser=page.locator('#advisor-kind');
+ await expect(chooser).toHaveCount(1);
+ await chooser.selectOption('electric');
+ await expect(page.locator('.service-advisor .service-card')).toHaveCount(2);
+ await expect(page.locator('.service-advisor .contact-warning')).toContainText(/не является|специалист|mutaxassis|maʼlumotnoma/i);
+ await chooser.selectOption('all');
+ await expect(page.locator('.service-advisor .service-card')).toHaveCount(6);
+});
+test('ten story page galleries fit a 320px mobile viewport',async({page})=>{
+ await page.setViewportSize({width:320,height:568});
+ await page.route('https://images.unsplash.com/**',route=>route.abort());
+ for(const [site,story] of Object.entries(sites)){
+  await page.goto('/'+site+'/'+story,{waitUntil:'domcontentloaded'});
+  const sizes=await page.evaluate(()=>({document:document.documentElement.scrollWidth,screen:document.documentElement.clientWidth}));
+  expect(sizes.document,site).toBeLessThanOrEqual(sizes.screen+3);
+ }
+});
