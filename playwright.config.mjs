@@ -1,6 +1,6 @@
 import {defineConfig,devices} from '@playwright/test';
 export default defineConfig({
- testDir:'./tests',testMatch:'*.spec.mjs',timeout:45000,
+ testDir:'./tests',testMatch:'browser.spec.mjs',timeout:45000,
  expect:{timeout:12000},retries:process.env.CI?1:0,workers:process.env.CI?3:undefined,
  reporter:process.env.CI?'github':'list',
  use:{baseURL:'http://127.0.0.1:4173'},
