@@ -101,3 +101,12 @@ html{scroll-behavior:auto}
 
 /* Bespoke identity: 07-auto-service */
 .editorial-grid{gap:0;border-top:3px solid var(--ink);border-left:1px solid var(--ink)}.editorial-panel{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink)}.editorial-panel:nth-child(2),.editorial-panel:nth-child(3){margin-top:0}.editorial-panel::before{content:'+';position:absolute;z-index:2;top:9px;left:13px;color:var(--accent);font:900 28px var(--display)}.editorial-label{font:clamp(17px,2vw,27px)/1 var(--display);text-transform:uppercase}.editorial-photo{filter:contrast(1.1) saturate(.65)}
+
+/* TORQ / WORKS / Service Finder: helpful navigation, never remote diagnosis. */
+.service-advisor{border-block:1px solid var(--stroke);background:linear-gradient(120deg,var(--paper),var(--panel))}
+.service-advisor .advisor-controls{max-width:790px;display:grid;grid-template-columns:minmax(190px,.55fr) minmax(260px,1fr);align-items:center;gap:18px 30px;margin-bottom:30px;padding:32px;border:1px solid var(--stroke);background:var(--paper)}
+.service-advisor .advisor-controls label{font-family:var(--display);font-size:clamp(20px,2vw,29px);letter-spacing:-.035em;margin:0;text-transform:uppercase}
+.service-advisor .advisor-controls select{width:100%;border:2px solid var(--ink);border-radius:0;padding:15px 18px;min-height:55px}
+.service-advisor .contact-warning{grid-column:1/-1;font-size:13px}
+.service-advisor .result-count{display:block;margin-bottom:30px;color:var(--muted)}
+@media(max-width:767px){.service-advisor .advisor-controls{grid-template-columns:1fr;padding:22px}.service-advisor .contact-warning{grid-column:auto}}
