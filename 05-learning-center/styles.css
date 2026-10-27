@@ -111,3 +111,6 @@ html{scroll-behavior:auto}
 .cta-eyebrow{opacity:1}
 
 .statement-strip{color:var(--paper)}.button-main{color:#172027}.button-main:hover{background:#d64c3a}
+
+/* Follow-up Lighthouse contrast correction. */
+.hero .button-main,.inner-hero .button-main{background:#624ce5;color:#fff}.hero .button-main:hover,.inner-hero .button-main:hover{background:#543ccf}
