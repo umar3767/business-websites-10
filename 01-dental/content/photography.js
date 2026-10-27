@@ -1,6 +1,7 @@
-/* Unsplash CDN reference IDs selected for the 01-dental portfolio concept.
-  External image availability and subjects must be verified before client launch.
-  Original authored SVG artwork remains an automatic load-error fallback. */
+/* VELA DENT — curated visual direction. These third-party Unsplash IDs are
+   reference candidates, not licensed local assets. Validate availability,
+   subject accuracy, attribution requirements and commercial usage before
+   publishing a real client site. The authored SVGs remain fallback artwork. */
 export const photos = [
   "photo-1606811971618-4486d14f3f99",
   "photo-1629909613654-28e377c37b09",
