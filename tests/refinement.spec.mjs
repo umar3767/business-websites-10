@@ -22,7 +22,12 @@ for(const [site,story] of Object.entries(sites)){
   await expect(page.locator('.editorial-panel')).toHaveCount(3);
   await expect(page.locator('.editorial-panel figcaption')).toHaveCount(3);
   await expect(page.locator('.editorial-panel img')).toHaveCount(3);
-  await expect.poll(()=>page.locator('.editorial-panel img').evaluateAll(imgs=>imgs.every(img=>img.complete&&img.naturalWidth>0))).toBeTruthy();
+  const images=page.locator('.editorial-panel img');
+  for(let i=0;i<3;i++){
+   const photo=images.nth(i);
+   await photo.scrollIntoViewIfNeeded();
+   await expect.poll(()=>photo.evaluate(img=>img.complete&&img.naturalWidth>0)).toBeTruthy();
+  }
   expect(errors).toEqual([]);
  });
  test(site+' mobile menu opens and closes accessibly using Escape',async({page})=>{
